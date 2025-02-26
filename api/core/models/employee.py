@@ -1,3 +1,7 @@
+# Employee Model - Day 1 (26.02.2025)
+# Backend Developer 2: Kamilla
+# This file contains the Employee model with all required fields
+
 from django.db import models
 
 
