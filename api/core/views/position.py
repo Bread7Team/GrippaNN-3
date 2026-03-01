@@ -1,23 +1,15 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
-from core.models import Position
-from core.serializers import PositionSerializer
-from core.mixins import ChangeHistoryMixin
-from core.permissions import IsAdminOrHrManager
+from core.models import Position, Employee, File
+from core.serializers import PositionSerializer, EmployeeSerializer, FileSerializer
 
-
-class PositionViewSet(ChangeHistoryMixin, viewsets.ModelViewSet):
-    """CRUD для должностей (с soft-delete и историей)."""
-
+class PositionViewSet(viewsets.ModelViewSet):
+    queryset = Position.objects.all()
     serializer_class = PositionSerializer
-    permission_classes = [IsAuthenticated, IsAdminOrHrManager]
-    search_fields = ['name']
-    ordering_fields = ['name', 'id']
-    history_object_type = 'position'
 
-    def get_queryset(self):
-        qs = Position.objects.all()
-        show_deleted = self.request.query_params.get('show_deleted', 'false')
-        if show_deleted.lower() != 'true':
-            qs = qs.filter(deleted_at__isnull=True)
-        return qs
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+class FileViewSet(viewsets.ModelViewSet):
+    queryset = File.objects.all()
+    serializer_class = FileSerializer
