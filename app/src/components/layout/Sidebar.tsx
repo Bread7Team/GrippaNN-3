@@ -2,12 +2,6 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { 
   Home, 
-  Building2, 
-  Users, 
-  Briefcase, 
-  Contact2, 
-  FileText, 
-  History, 
   UserCog, 
   LogOut,
   LayoutDashboard
@@ -15,12 +9,6 @@ import {
 
 const navItems = [
   { to: '/', label: 'Панель управления', icon: LayoutDashboard },
-  { to: '/organizations', label: 'Организации', icon: Building2 },
-  { to: '/departments', label: 'Отделы', icon: Users },
-  { to: '/positions', label: 'Должности', icon: Briefcase },
-  { to: '/employees', label: 'Сотрудники', icon: Contact2 },
-  { to: '/hr-operations', label: 'Кадровые операции', icon: FileText },
-  { to: '/history', label: 'История изменений', icon: History },
 ];
 
 const adminItems = [
