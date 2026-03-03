@@ -3,6 +3,7 @@ from .organization import Organization
 from .department import Department
 from .position import Position
 from .employee import Employee
+from .file import File
 
 __all__ = [
     'User',
@@ -10,4 +11,5 @@ __all__ = [
     'Department',
     'Position',
     'Employee',
+    'File',
 ]

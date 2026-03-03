@@ -9,6 +9,8 @@ from .views import (
     OrganizationViewSet,
     DepartmentViewSet,
     PositionViewSet,
+    EmployeeViewSet,
+    FileViewSet,
 )
 
 router = DefaultRouter()
@@ -16,6 +18,8 @@ router.register(r'users', UserViewSet, basename='user')
 router.register(r'organizations', OrganizationViewSet, basename='organization')
 router.register(r'departments', DepartmentViewSet, basename='department')
 router.register(r'positions', PositionViewSet, basename='position')
+router.register(r'employees', EmployeeViewSet, basename='employee')
+router.register(r'files', FileViewSet, basename='file')
 
 urlpatterns = [
     # Auth

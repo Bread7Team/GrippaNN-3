@@ -3,6 +3,8 @@ from .user import UserViewSet
 from .organization import OrganizationViewSet
 from .department import DepartmentViewSet
 from .position import PositionViewSet
+from .employee import EmployeeViewSet
+from .file import FileViewSet
 
 __all__ = [
     'LoginView',
@@ -12,4 +14,6 @@ __all__ = [
     'OrganizationViewSet',
     'DepartmentViewSet',
     'PositionViewSet',
+    'EmployeeViewSet',
+    'FileViewSet',
 ]
