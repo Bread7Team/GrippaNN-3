@@ -6,10 +6,16 @@ from .views import (
     LoginView,
     RegisterView,
     MeView,
+    OrganizationViewSet,
+    DepartmentViewSet,
+    PositionViewSet,
 )
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet, basename='user')
+router.register(r'organizations', OrganizationViewSet, basename='organization')
+router.register(r'departments', DepartmentViewSet, basename='department')
+router.register(r'positions', PositionViewSet, basename='position')
 
 urlpatterns = [
     # Auth
