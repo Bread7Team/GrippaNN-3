@@ -12,7 +12,20 @@ const operationTypes = [
   { value: 'dismissal', label: 'Увольнение' },
 ];
 
+const OPERATION_TYPES = [
+  { value: 'hire', label: 'Приём на работу', fields: ['department', 'position', 'salary'] },
+  { value: 'salary_change', label: 'Изменение зарплаты', fields: ['salary'] },
+  { value: 'department_change', label: 'Перевод в другой отдел', fields: ['department'] },
+  { value: 'dismissal', label: 'Увольнение', fields: [] },
+];
+
 export default function HrOperationsPage() {
+  const [selectedType, setSelectedType] = useState('');
+  
+  const isFieldVisible = (fieldName: string) => {
+    const type = OPERATION_TYPES.find(t => t.value === selectedType);
+    return type?.fields.includes(fieldName);
+  };
   const [items, setItems] = useState<HrOperation[]>([]);
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [departments, setDepartments] = useState<Department[]>([]);
