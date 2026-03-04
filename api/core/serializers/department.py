@@ -14,3 +14,15 @@ class DepartmentSerializer(serializers.ModelSerializer):
             'comment', 'deleted_at',
         ]
         read_only_fields = ['id', 'deleted_at']
+
+
+class DepartmentTreeSerializer(serializers.ModelSerializer):
+    children = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Department
+        fields = ['id', 'name', 'children']
+
+    def get_children(self, obj):
+        children = Department.objects.filter(parent=obj, deleted_at__isnull=True)
+        return DepartmentTreeSerializer(children, many=True).data
