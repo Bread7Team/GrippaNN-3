@@ -34,6 +34,10 @@ export default function OrganizationsPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (form.name.trim().length < 3) {
+      alert('Название организации должно содержать минимум 3 символа');
+      return;
+    }
     try {
       if (editing) {
         await organizationsApi.update(editing.id, form);
