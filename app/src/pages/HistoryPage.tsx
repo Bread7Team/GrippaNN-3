@@ -26,9 +26,13 @@ export default function HistoryPage() {
       {loading ? (
         <p className="text-gray-500">Загрузка...</p>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-4 relative before:absolute before:inset-0 before:ml-5 before:w-0.5 before:bg-slate-200 before:-z-0">
           {items.map((item) => (
-            <div key={item.id} className="bg-white rounded-lg shadow p-4">
+            <div key={item.id} className="relative pl-12">
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-4 border-slate-50 bg-blue-600 flex items-center justify-center text-white shadow-sm z-10">
+                <span className="text-[10px] font-bold">#{item.id}</span>
+              </div>
+              <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 hover:border-blue-300 transition-colors">
               <div className="flex justify-between items-start mb-2">
                 <div>
                   <span className="inline-block bg-blue-100 text-blue-700 text-xs font-medium px-2 py-1 rounded mr-2">
