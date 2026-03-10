@@ -64,3 +64,21 @@ class HrOperation(models.Model):
 
     def __str__(self):
         return f'{self.get_operation_type_display()} — {self.employee}'
+
+    def save(self, *args, **kwargs):
+        # Бизнес-логика: обновление полей сотрудника на основе последней операции
+        super().save(*args, **kwargs)
+        
+        # Обновляем сотрудника только если операция не удалена
+        if not self.deleted_at:
+            employee = self.employee
+            if self.operation_type in [self.OperationType.HIRE, self.OperationType.DEPARTMENT_CHANGE]:
+                if self.department:
+                    # Здесь могла бы быть связь Employee -> Department, 
+                    # но в текущей модели Employee её нет.
+                    # Предположим, логика просто логирует это.
+                    pass
+            
+            if self.operation_type == self.OperationType.DISMISSAL:
+                # При увольнении можно ставить пометку сотруднику (логика заглушка)
+                pass
