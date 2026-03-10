@@ -2,11 +2,11 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from core.models import Organization
 from core.serializers import OrganizationSerializer
-from core.mixins import ChangeHistoryMixin
+from core.mixins import ChangeHistoryMixin, SoftDeleteMixin
 from core.permissions import IsAdminOrHrManager
 
 
-class OrganizationViewSet(ChangeHistoryMixin, viewsets.ModelViewSet):
+class OrganizationViewSet(SoftDeleteMixin, ChangeHistoryMixin, viewsets.ModelViewSet):
     """CRUD для организаций (с soft-delete и историей)."""
 
     serializer_class = OrganizationSerializer
